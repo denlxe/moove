@@ -1,0 +1,36 @@
+id,category,name,description,price,shelfLifeDays,active
+P001,LIQUID,Fresh Milk 200mL,"Pasteurized fresh milk from Laguna, Batangas and Bulacan cooperatives",40.0,7,true
+P002,LIQUID,Fresh Milk 500mL,"Pasteurized fresh milk from Laguna, Batangas and Bulacan cooperatives",75.0,7,true
+P003,LIQUID,Fresh Milk 1L,"Pasteurized fresh milk from Laguna, Batangas and Bulacan cooperatives",140.0,7,true
+P004,LIQUID,Fresh Milk 2L,"Pasteurized fresh milk from Laguna, Batangas and Bulacan cooperatives",280.0,7,true
+P005,LIQUID,Choco Milk 200mL,Pasteurized milk blended with Davao cacao,45.0,7,true
+P006,LIQUID,Choco Milk 500mL,Pasteurized milk blended with Davao cacao,85.0,7,true
+P007,LIQUID,Choco Milk 1L,Pasteurized milk blended with Davao cacao,165.0,7,true
+P008,LIQUID,Choco Milk 2L,Pasteurized milk blended with Davao cacao,325.0,7,true
+P009,LIQUID,Coffee Milk 200mL,Creamy milk with Benguet and Cordillera coffee extract,45.0,7,true
+P010,LIQUID,Coffee Milk 500mL,Creamy milk with Benguet and Cordillera coffee extract,90.0,7,true
+P011,LIQUID,Coffee Milk 1L,Creamy milk with Benguet and Cordillera coffee extract,175.0,7,true
+P012,LIQUID,Coffee Milk 2L,Creamy milk with Benguet and Cordillera coffee extract,350.0,7,true
+P013,LIQUID,Pandan Milk 500mL,Milk infused with fresh pandan leaves,85.0,7,true
+P014,LIQUID,Pandan Milk 1L,Milk infused with fresh pandan leaves,165.0,7,true
+P015,LIQUID,Melon Milk 500mL,Milk blended with cantaloupe and honeydew,85.0,7,true
+P016,LIQUID,Melon Milk 1L,Milk blended with cantaloupe and honeydew,165.0,7,true
+P017,YOGURT,Yogurt Plain 500mL,"Live-culture drinking yogurt, pleasantly tart",85.0,14,true
+P018,YOGURT,Yogurt Plain 1L,"Live-culture drinking yogurt, pleasantly tart",165.0,14,true
+P019,YOGURT,Yogurt Strawberry 500mL,Drinking yogurt with La Trinidad strawberries,125.0,14,true
+P020,YOGURT,Yogurt Strawberry 1L,Drinking yogurt with La Trinidad strawberries,250.0,14,true
+P021,YOGURT,Yogurt Blueberry 500mL,Drinking yogurt with Benguet and Bukidnon blueberries,140.0,14,true
+P022,YOGURT,Yogurt Blueberry 1L,Drinking yogurt with Benguet and Bukidnon blueberries,280.0,14,true
+P023,YOGURT,Yogurt Peach Mango 500mL,Drinking yogurt with Carabao mango and peach,100.0,14,true
+P024,YOGURT,Yogurt Peach Mango 1L,Drinking yogurt with Carabao mango and peach,200.0,14,true
+P025,CHEESE,Kesong Puti 200g,"Fresh, soft, lightly salted white cheese",90.0,7,true
+P026,CHEESE,Mozzarella Cheese 200g,Hand-stretched cheese with a perfect melt,160.0,21,true
+P027,CHEESE,Gouda Cheese 200g,"Mild, buttery, semi-hard aged cheese",200.0,60,true
+P028,CHEESE,Processed Cheese Spread 200g,"Smooth, creamy, easy-to-spread cheese",90.0,30,true
+P029,CHEESE,Feta Cheese without Oil 250g,"Crumbly, savory feta aged in brine",150.0,30,true
+P030,CHEESE,Feta Cheese in a Jar 180g,Feta cubes in herb and garlic infused oil,180.0,60,true
+P031,CHEESE,Ricotta 200g,"Light, fluffy cheese made from whey",180.0,7,true
+P032,CHEESE,Cream Cheese 200g,"Soft, rich, spreadable cheese",200.0,21,true
+P033,CHEESE,Cottage Cheese 200g,Mild curds in a light salted cream dressing,180.0,10,true
+P034,CHEESE,Cheddar Cheese 200g,"Aged, sharp, firm cheese",200.0,60,true
+P035,BUTTER,Butter 200g,Cultured butter from full-cream local milk,160.0,60,true

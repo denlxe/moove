@@ -1,0 +1,4 @@
+username,displayName,role,password
+manager,Store Manager,MANAGER,manager123
+clerk1,Clerk One,CLERK,clerk123
+clerk2,Clerk Two,CLERK,clerk123
