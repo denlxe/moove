@@ -5,6 +5,16 @@ package components;
  * - Voided rows are greyed out, and the "Void" button column only appears when a void handler is supplied.
  */
 
-public class TransactionTable {
+import java.util.function.Consumer;
+import java.util.list;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableView;
+import model.Transaction;
+import service.AgriSystem;
+
+public class TransactionTable extends TableView<Transaction> {
+
 
 }

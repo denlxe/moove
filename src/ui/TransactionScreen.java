@@ -62,17 +62,38 @@ import java.util.List;
 
 public class TransactionScreen extends Screen {
 	
-	private final SceneManager sceneManager;
 	private final AgriSystem system;
+	private final String onlyUsername;
 	private final boolean readOnly;
 	
-	public TransactionScreen(SceneManager sceneManager, AgriSystem system, boolean readOnly) {
-		this.sceneManager = sceneManager;
+    private final ComboBox<String> typeFilter = new ComboBox<>();
+    private final TextField search = new TextField();
+    private final CheckBox showVoided = new CheckBox("Show voided");
+    private TransactionTable table;
+    private List<Transaction> allTransactions = new ArrayList<>();
+	
+	public TransactionScreen(AgriSystem system, String onlyUsername, boolean readOnly) {
 		this.system  = system;
+		this.onlyUsername = onlyUsername;
 		this.readOnly = readOnly;
 	}
 	
 	@Override
-	protected Parent build() {
+	public String getName() {
+		return "Transactions";
 	}
+	
+	@Override
+	protected Parent build() {
+		
+		
+		return page("Transactions", "Subtitle", );
+		
+	}
+	
+	@Override
+	public void refresh() {
+		
+	}
+	
 }

@@ -27,6 +27,7 @@ public class ManagerDashboard extends Dashboard {
         return Arrays.asList(
                 new OverviewScreen(sceneManager, system),
                 new ProductScreen(system),
-                new InventoryScreen(system, true));
+                new InventoryScreen(system, true),
+                new TransactionScreen(system, null, false));
     }
 }
