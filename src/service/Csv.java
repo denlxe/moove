@@ -74,6 +74,7 @@ final class Csv {
             return rows;
         }
         List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
+        // lines becomes a list containing n strings
         for (int i = 1; i < lines.size(); i++) {
             if (!lines.get(i).trim().isEmpty()) {
                 rows.add(parse(lines.get(i)));

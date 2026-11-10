@@ -62,7 +62,7 @@ public class SceneManager {
         clerkScene.getStylesheets().add(getClass().getResource("/css/app.css").toExternalForm());
         window.setScene(clerkScene);
         window.getIcons().add(icon);
-        window.setTitle("Moo-ve Dairy: " + clerk.getDisplayName() + " (view only)");
+        window.setTitle("Moove: " + clerk.getDisplayName() + " (view only)");
         window.show();
     }
 

@@ -1,1 +1,2 @@
 id,type,timestamp,recordedBy,status,voidedBy,voidedAt,voidReason,f1,f2,f3,f4,f5
+1,WRITEOFF,2026-11-10T10:05:44.169238200,manager,COMPLETED,,,,"B0007 (Choco Milk 500mL x6), B0002 (Fresh Milk 500mL x24), B0001 (Fresh Milk 200mL x20), B0004 (Fresh Milk 1L x12)",62,,,

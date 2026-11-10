@@ -8,8 +8,8 @@ import java.util.Locale;
 // formatting helpers for money and dates
 public final class Fmt {
 
-    private static final DateTimeFormatter DATE = DateTimeFormatter.ofPattern("MMM d, yyyy", Locale.ENGLISH);
-    private static final DateTimeFormatter DATE_TIME = DateTimeFormatter.ofPattern("MMM d, yyyy h:mm a", Locale.ENGLISH);
+    private static final DateTimeFormatter DATE = DateTimeFormatter.ofPattern("MMM d, yyyy");
+    private static final DateTimeFormatter DATE_TIME = DateTimeFormatter.ofPattern("MMM d, yyyy h:mm a");
 
     private Fmt() {
     }
