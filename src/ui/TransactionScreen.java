@@ -101,13 +101,6 @@ public class TransactionScreen extends Screen {
 			fee.setOnAction(e-> recordFee());
 			
 			HBox actions = new HBox(10, donation, fee);
-			User user = system.getCurrentUser();
-			if (user != null && user.canWithdrawCash()) {
-				Button out = new Button("Cash out");
-				out.getStyleClass().add("btn-light-dark");
-				out.setOnAction(e -> recordCashOut());
-				actions.getChildren().add(out);
-			}
 			body.getChildren().add(actions);
 		}
 		
@@ -209,16 +202,34 @@ public class TransactionScreen extends Screen {
             refresh();
         }
     }
-
     
     private void recordFee() {
-    	
+        FormDialog dialog = new FormDialog("Toll processing fee",
+                "A farmer brings their own milk to be processed and pays a fee per liter. "
+                        + "The default rate is only an example; use the shop's actual rate.",
+                "Record fee");
+        TextField farmer = dialog.addText("Farmer / cooperative", "", "Name");
+        TextField liters = dialog.addText("Liters processed", "", "e.g. 25");
+        TextField rate = dialog.addText("Fee per liter (PHP)", "13.00", "");
+        Label total = dialog.addInfo("Fee", Fmt.money(0));
+        Runnable update = () -> {
+            try {
+                total.setText(Fmt.money(Fmt.round2(Input.number(liters.getText(), "Liters")
+                        * Input.number(rate.getText(), "Rate"))));
+            } catch (Exception e) {
+                total.setText("-");
+            }
+        };
+        liters.textProperty().addListener((o, a, b) -> update.run());
+        rate.textProperty().addListener((o, a, b) -> update.run());
+        boolean done = dialog.show(() -> system.recordProcessingFee(farmer.getText(),
+                Input.positiveNumber(liters.getText(), "Liters processed"),
+                Input.positiveNumber(rate.getText(), "Fee per liter")));
+        if (done) {
+            refresh();
+        }
     }
-    
-    public void recordCashOut() {
-    	
-    }
-
+  
     public void voidTransaction(Transaction t) {
     	
     }
