@@ -62,6 +62,8 @@ import java.util.List;
 
 public class TransactionScreen extends Screen {
 	
+    private static final String ALL_TYPES = "All types";
+	
 	private final AgriSystem system;
 	private final String onlyUsername;
 	private final boolean readOnly;
@@ -85,15 +87,111 @@ public class TransactionScreen extends Screen {
 	
 	@Override
 	protected Parent build() {
+		table = new TransactionTable(system, null);
+		table.setPrefHeight(440);
+				
+		VBox body = new VBox(14);
+		if (!readOnly) {
+			Button donation = new Button("Record Donation");
+			Button fee = new Button("Toll processing fee");
+			
+			donation.getStyleClass().add("btn-primary");
+			donation.setOnAction(e -> recordDonation()); // open dialog
+			fee.getStyleClass().add("btn-primary");
+			fee.setOnAction(e-> recordFee());
+			
+			HBox actions = new HBox(10, donation, fee);
+			User user = system.getCurrentUser();
+			if (user != null && user.canWithdrawCash()) {
+				Button out = new Button("Cash out");
+				out.getStyleClass().add("btn-light-dark");
+				out.setOnAction(e -> recordCashOut());
+				actions.getChildren().add(out);
+			}
+			body.getChildren().add(actions);
+		}
 		
+        typeFilter.getItems().addAll(ALL_TYPES, "Sale", "Donation", "Processing fee", "Cash out", "Write-off");
+        typeFilter.setValue(ALL_TYPES);
+        typeFilter.valueProperty().addListener((o, a, b) -> applyFilter());
+        search.setPromptText("Search details, donor, person...");
+        search.setPrefWidth(280);
+        search.textProperty().addListener((o, a, b) -> applyFilter());
+        showVoided.setSelected(true);
+        showVoided.selectedProperty().addListener((o, a, b) -> applyFilter());
+        HBox filters = new HBox(12, typeFilter, search, showVoided);
+
+        body.getChildren().addAll(section("Transaction history"), filters, table);
+
 		
-		return page("Transactions", "Subtitle", );
-		
+		return page("Transactions", "Subtitle", body);
 	}
 	
 	@Override
 	public void refresh() {
-		
+      if (onlyUsername == null) {
+            allTransactions = system.getTransactions();
+        } else {
+            allTransactions = system.getTransactionsBy(onlyUsername);
+        }
+        applyFilter();
+        int completed = 0;
+        int voided = 0;
+        for (Transaction t : allTransactions) {
+            if (t.isVoided()) {
+                voided++;
+            } else {
+                completed++;
+            }
+        }
 	}
 	
+	// ===============================
+	// shows only the transactions that match the type, search text and "show voided" choice
+    private void applyFilter() {
+        if (table == null) {
+            return;
+        }
+        String q = "";
+        if (search.getText() != null) {
+            q = search.getText().trim().toLowerCase();
+        }
+        String type = typeFilter.getValue();
+        List<Transaction> visible = new ArrayList<>();
+        for (Transaction t : allTransactions) {
+            if (!showVoided.isSelected() && t.isVoided()) {
+                continue;
+            }
+            if (type != null && !type.equals(ALL_TYPES) && !t.getType().equals(type)) {
+                continue;
+            }
+            if (!q.isEmpty()) {
+                boolean found = t.getDetails().toLowerCase().contains(q)
+                        || system.displayNameOf(t.getRecordedBy()).toLowerCase().contains(q)
+                        || Integer.toString(t.getId()).equals(q);
+                if (!found) {
+                    continue;
+                }
+            }
+            visible.add(t);
+        }
+        table.setData(visible);
+    }
+	
+    // ======================= dialogs ========================
+    private void recordDonation() {
+    	
+    }
+    
+    private void recordFee() {
+    	
+    }
+    
+    public void recordCashOut() {
+    	
+    }
+
+    public void voidTransaction(Transaction t) {
+    	
+    }
 }
