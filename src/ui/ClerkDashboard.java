@@ -30,6 +30,7 @@ public class ClerkDashboard extends Dashboard {
 
     @Override
     protected List<Screen> createScreens() {
-        return Arrays.asList(new InventoryScreen(system, false));
+        return Arrays.asList(new InventoryScreen(system, false),
+        		new SellScreen(system, false));
     }
 }

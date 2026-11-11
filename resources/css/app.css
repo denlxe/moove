@@ -274,3 +274,14 @@
 .total-price {
 	-fx-font-size: 13px;
 }
+
+.sell-right-panel {
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 16;
+    -fx-border-color: #E3E7DE;
+    -fx-border-radius: 16;
+    -fx-padding: 16 20 16 20;
+    -fx-spacing: 3;
+    -fx-min-width: 190;
+    -fx-pref-width: 350;
+}

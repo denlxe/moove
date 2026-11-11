@@ -72,6 +72,7 @@ public class SellScreen extends Screen {
         search.textProperty().addListener((o, a, b) -> showCards());
  
         cards.setPadding(new Insets(4));
+        cards.setAlignment(Pos.TOP_CENTER);
         ScrollPane cardScroll = new ScrollPane(cards);
         cardScroll.setFitToWidth(true);
         cardScroll.setPrefHeight(520);
@@ -95,10 +96,8 @@ public class SellScreen extends Screen {
         checkout.setOnAction(e -> checkout());
  
         VBox right = new VBox(12, cartTitle, lineScroll, totalLabel, checkout);
-        right.getStyleClass().add("stat-card"); // reuse the white rounded box look
-        right.setMinWidth(320);
-        right.setPrefWidth(340);
-        right.setMaxWidth(340);
+        right.getStyleClass().add("sell-right-panel");
+        right.setPrefWidth(350); 
  
         String subtitle = readOnly
                 ? "View only. Clerks record sales from their own dashboard."

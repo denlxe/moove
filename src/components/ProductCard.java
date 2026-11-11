@@ -30,6 +30,7 @@ public class ProductCard extends Button {
         }
         setPrefWidth(200);
         setMinHeight(110);
+        setPrefHeight(130);
         setAlignment(Pos.TOP_LEFT);
  
         Label category = new Label(product.getCategory().getLabel());
