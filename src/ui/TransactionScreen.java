@@ -180,8 +180,36 @@ public class TransactionScreen extends Screen {
 	
     // ======================= dialogs ========================
     private void recordDonation() {
-    	
+        FormDialog dialog = new FormDialog("Record donation",
+                "Cash donations go into the wallet. Item donations are recorded in the history only.",
+                "Record donation");
+        TextField donor = dialog.addText("Donor name", "", "Who donated?");
+        ComboBox<Donation.Kind> kind = dialog.addChoice("Type", Arrays.asList(Donation.Kind.values()), Donation.Kind.CASH);
+        TextField amount = dialog.addText("Amount (PHP)", "", "Cash donations only");
+        TextField item = dialog.addText("Item name", "", "Item donations only");
+        TextField quantity = dialog.addText("Item quantity", "", "Item donations only");
+        Runnable sync = () -> {
+            boolean cash = kind.getValue() == Donation.Kind.CASH;
+            amount.setDisable(!cash);
+            item.setDisable(cash);
+            quantity.setDisable(cash);
+        };
+        kind.valueProperty().addListener((o, a, b) -> sync.run());
+        sync.run();
+
+        boolean done = dialog.show(() -> {
+            if (kind.getValue() == Donation.Kind.CASH) {
+                system.recordCashDonation(donor.getText(), Input.positiveNumber(amount.getText(), "Amount"));
+            } else {
+                system.recordItemDonation(donor.getText(), item.getText(),
+                        Input.positiveInt(quantity.getText(), "Item quantity"));
+            }
+        });
+        if (done) {
+            refresh();
+        }
     }
+
     
     private void recordFee() {
     	

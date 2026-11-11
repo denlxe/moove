@@ -31,6 +31,7 @@ public abstract class Screen {
     }
 
     // builds page layout
+    // Node... acts like an array but is flexible, it can handle 0 or more Node objects as argument
     protected static Parent page(String title, String subtitle, Node... content) {
         Label heading = new Label(title);
         

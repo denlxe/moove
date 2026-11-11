@@ -7,6 +7,7 @@ import exception.PermissionException;
 import exception.StorageException;
 import exception.ValidationException;
 import model.CashWithdrawal;
+import model.Donation;
 import model.Inventory;
 import model.MilkIntake;
 import model.ProcessingFee;
@@ -489,5 +490,37 @@ public final class AgriSystem {
             }
         }
         return Fmt.round2(total);
+    }
+    
+    
+    // records a cash donation
+    // money goes into the wallet
+    public Donation recordCashDonation(String donorName, double amount) throws AgriException {
+        User user = requireUser();
+        String donor = Input.text(donorName, "Donor name", 60);
+        if (amount <= 0) {
+            throw new ValidationException("Amount must be greater than zero.");
+        }
+        Donation donation = new Donation(nextTransactionId++, now(), user.getUsername(), donor,
+                Donation.Kind.CASH, Fmt.round2(amount), "", 0);
+        transactions.add(donation);
+        persist();
+        return donation;
+    }
+    
+    // records an item donation
+    // only kept in the history (no wallet or stock change)
+    public Donation recordItemDonation(String donorName, String itemName, int quantity) throws AgriException {
+        User user = requireUser();
+        String donor = Input.text(donorName, "Donor name", 60);
+        String item = Input.text(itemName, "Item name", 60);
+        if (quantity <= 0) {
+            throw new ValidationException("Quantity must be greater than zero.");
+        }
+        Donation donation = new Donation(nextTransactionId++, now(), user.getUsername(), donor,
+                Donation.Kind.ITEM, 0, item, quantity);
+        transactions.add(donation);
+        persist();
+        return donation;
     }
 }
