@@ -268,3 +268,9 @@
 }
 .login-tagline { -fx-text-fill: #66726A; -fx-font-size: 13px; }
 .login-hint { -fx-text-fill: #7F8A82; -fx-font-size: 12px; }
+
+
+/*----------- sell screen --------------*/
+.total-price {
+	-fx-font-size: 13px;
+}

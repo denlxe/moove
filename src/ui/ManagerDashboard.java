@@ -28,6 +28,7 @@ public class ManagerDashboard extends Dashboard {
                 new OverviewScreen(sceneManager, system),
                 new ProductScreen(system),
                 new InventoryScreen(system, true),
+                new SellScreen(system, false),
                 new TransactionScreen(system, null, false));
     }
 }

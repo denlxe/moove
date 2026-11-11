@@ -230,7 +230,25 @@ public class TransactionScreen extends Screen {
         }
     }
   
-    public void voidTransaction(Transaction t) {
-    	
+    private void voidTransaction(Transaction t) {
+        StringBuilder effects = new StringBuilder();
+        if (t instanceof Sale) {
+            effects.append("The sold units go back into stock. ");
+        }
+        double cash = t.getCashAmount();
+        if (cash > 0) {
+            effects.append(Fmt.money(cash)).append(" is taken out of the wallet.");
+        } else if (cash < 0) {
+            effects.append(Fmt.money(-cash)).append(" is put back into the wallet.");
+        }
+        FormDialog dialog = new FormDialog("Void transaction #" + t.getId(),
+                t.getType() + ": " + t.getDetails(), "Void transaction");
+        if (effects.length() > 0) {
+            dialog.addInfo("What happens", effects.toString());
+        }
+        TextField reason = dialog.addText("Reason (optional)", "", "Why is it being voided?");
+        if (dialog.show(() -> system.voidTransaction(t.getId(), reason.getText()))) {
+            refresh();
+        }
     }
 }
